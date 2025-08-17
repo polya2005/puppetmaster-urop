@@ -1,0 +1,11 @@
+bin/
+generated/
+tmp/
+SWSOCK*
+*.out
+*.err
+*.txt
+*.csv
+perf.*
+*.bin
+output/

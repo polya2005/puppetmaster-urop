@@ -1,0 +1,15 @@
+build
+*~
+*.swp
+*.log
+*.jou
+*.str
+.DS_Store
+.Xil
+*.bo
+*.ba
+*.v
+*.h
+*.so
+vcu108/
+verilator/

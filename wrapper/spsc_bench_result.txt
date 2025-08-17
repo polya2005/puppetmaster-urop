@@ -1,0 +1,125 @@
+SPSC Queue Benchmark (Throughput + Latency)
+Estimated CPU clock : 2.112 GHz
+Queue capacity      : 1024
+Run time per test   : 5 sec
+
+=== Throughput Test:    8 bytes ===
+Duration            : 5.00 sec
+Consumed            : 135,307,059 items (1,731,930,355 bits/sec)
+Loss (enqueue fail) : 0.00%
+
+=== Throughput Test:   32 bytes ===
+Duration            : 5.00 sec
+Consumed            : 136,649,909 items (6,996,475,340 bits/sec)
+Loss (enqueue fail) : 0.00%
+
+=== Throughput Test:   64 bytes ===
+Duration            : 5.00 sec
+Consumed            : 133,767,428 items (13,697,784,627 bits/sec)
+Loss (enqueue fail) : 0.00%
+
+=== Throughput Test:  128 bytes ===
+Duration            : 5.00 sec
+Consumed            : 119,112,932 items (24,394,328,473 bits/sec)
+Loss (enqueue fail) : 0.00%
+
+=== Throughput Test:  256 bytes ===
+Duration            : 5.00 sec
+Consumed            : 135,443,319 items (55,477,583,462 bits/sec)
+Loss (enqueue fail) : 0.00%
+
+=== Throughput Test:  512 bytes ===
+Duration            : 5.00 sec
+Consumed            : 133,400,359 items (109,281,574,092 bits/sec)
+Loss (enqueue fail) : 0.00%
+
+=== Throughput Test: 1024 bytes ===
+Duration            : 5.00 sec
+Consumed            : 133,944,186 items (219,454,154,342 bits/sec)
+Loss (enqueue fail) : 0.00%
+
+=== Throughput Test: 2048 bytes ===
+Duration            : 5.00 sec
+Consumed            : 134,039,017 items (439,219,050,905 bits/sec)
+Loss (enqueue fail) : 0.00%
+
+=== Throughput Test: 4096 bytes ===
+Duration            : 5.00 sec
+Consumed            : 119,969,627 items (786,232,947,507 bits/sec)
+Loss (enqueue fail) : 0.00%
+
+=== Throughput Test: 8192 bytes ===
+Duration            : 5.00 sec
+Consumed            : 122,299,488 items (1,603,003,849,113 bits/sec)
+Loss (enqueue fail) : 0.00%
+
+=== Latency Test:       8 bytes ===
+Duration             : 5.00 sec
+Consumed             : 60,423,988 items (773,427,046 bits/sec)
+Loss (enqueue fail)  : 0.00%
+Latency (cycles)    : min=403, max=342,887, avg=154,615
+Latency (ns est)    : p50=73408.2 ns, p99=78954.9 ns, p999=152581.8 ns
+
+=== Latency Test:      32 bytes ===
+Duration             : 5.00 sec
+Consumed             : 60,454,595 items (3,095,275,264 bits/sec)
+Loss (enqueue fail)  : 0.00%
+Latency (cycles)    : min=30,036, max=243,184, avg=153,527
+Latency (ns est)    : p50=72891.1 ns, p99=78832.7 ns, p999=111519.6 ns
+
+=== Latency Test:      64 bytes ===
+Duration             : 5.00 sec
+Consumed             : 60,392,369 items (6,184,178,585 bits/sec)
+Loss (enqueue fail)  : 0.00%
+Latency (cycles)    : min=103,066, max=285,263, avg=154,154
+Latency (ns est)    : p50=73101.4 ns, p99=79044.3 ns, p999=127350.6 ns
+
+=== Latency Test:     128 bytes ===
+Duration             : 5.00 sec
+Consumed             : 60,976,105 items (12,487,906,304 bits/sec)
+Loss (enqueue fail)  : 0.00%
+Latency (cycles)    : min=72,824, max=258,885, avg=153,883
+Latency (ns est)    : p50=72902.0 ns, p99=79624.8 ns, p999=113331.6 ns
+
+=== Latency Test:     256 bytes ===
+Duration             : 5.00 sec
+Consumed             : 61,519,641 items (25,198,444,953 bits/sec)
+Loss (enqueue fail)  : 0.00%
+Latency (cycles)    : min=127,223, max=321,392, avg=154,118
+Latency (ns est)    : p50=73004.3 ns, p99=79032.0 ns, p999=130811.6 ns
+
+=== Latency Test:     512 bytes ===
+Duration             : 5.00 sec
+Consumed             : 60,067,756 items (49,207,505,715 bits/sec)
+Loss (enqueue fail)  : 0.00%
+Latency (cycles)    : min=103,879, max=399,182, avg=155,631
+Latency (ns est)    : p50=73829.5 ns, p99=79275.9 ns, p999=131117.5 ns
+
+=== Latency Test:    1024 bytes ===
+Duration             : 5.00 sec
+Consumed             : 63,340,183 items (103,776,555,827 bits/sec)
+Loss (enqueue fail)  : 0.00%
+Latency (cycles)    : min=476, max=250,436, avg=161,416
+Latency (ns est)    : p50=77423.2 ns, p99=80788.1 ns, p999=116933.8 ns
+
+=== Latency Test:    2048 bytes ===
+Duration             : 5.00 sec
+Consumed             : 60,826,290 items (199,315,587,072 bits/sec)
+Loss (enqueue fail)  : 0.00%
+Latency (cycles)    : min=115,233, max=353,678, avg=153,777
+Latency (ns est)    : p50=72931.4 ns, p99=78909.9 ns, p999=132201.3 ns
+
+=== Latency Test:    4096 bytes ===
+Duration             : 5.00 sec
+Consumed             : 60,662,860 items (397,560,119,296 bits/sec)
+Loss (enqueue fail)  : 0.00%
+Latency (cycles)    : min=87,709, max=255,834, avg=158,131
+Latency (ns est)    : p50=75238.6 ns, p99=79368.2 ns, p999=117457.4 ns
+
+=== Latency Test:    8192 bytes ===
+Duration             : 5.00 sec
+Consumed             : 61,023,724 items (799,850,155,212 bits/sec)
+Loss (enqueue fail)  : 0.00%
+Latency (cycles)    : min=285, max=252,660, avg=152,620
+Latency (ns est)    : p50=72770.4 ns, p99=78775.4 ns, p999=115947.0 ns
+

@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+if [ -f "bin/board.txt" ]; then
+  BOARD=$(cat bin/board.txt)
+  echo "using stored value of BOARD=$BOARD" >&2
+elif ! [ -n "$BOARD" ]; then
+  echo "error: BOARD must be defined to run this" >&2
+  exit 1
+fi
+
+LD_LIBRARY_PATH=$PWD/deps/wrapper/output/$BOARD/:$LD_LIBRARY_PATH
+env LD_LIBRARY_PATH=$LD_LIBRARY_PATH ./bin/analyze $@ && env LD_LIBRARY_PATH=$LD_LIBRARY_PATH ./scripts/visualize.py analyzed.bin
