@@ -10,14 +10,17 @@ See `setup/README.md`.
 
 There are tutorials I wrote up in `notes/`. Comb through them if you have some questions about Bluespec.
 
+## Python model
+
+I generated a bunch of cool appendix figures in `model/`. The scripts are straightforward. Just run them directly and observe the output in the folder.
+
 ## Flow summary
 
 If you just want to run things, do this:
 1. Go to `wrapper/` and run `BOARD=sim make generate`
 2. Then `BOARD=sim make`. Observe `wrapper/output/`.
 3. Go to `runner/` and run `BOARD=sim make`.
-4. Set up test cases by running `python3 scripts/generate.py`.
-5. Run `run` bash script.
+4. Follow instructions in `README.md` there.
 
 ## New Puppetmaster implementation
 
