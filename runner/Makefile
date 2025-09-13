@@ -8,10 +8,10 @@ BIN_DIR = ./bin
 
 DEFINES = 
 
-CXXFLAGS += -I$(INCLUDE_DIR) -I$(GENERATED_DIR) -L$(GENERATED_DIR) -O3 -Wall -lm -pthread $(DEFINES) -g2 -flto -std=c++17
-CFLAGS += -I$(INCLUDE_DIR) -I$(GENERATED_DIR) -L$(GENERATED_DIR) -O3 -Wall -lm -pthread $(DEFINES) -g2 -flto -std=c17
+CXXFLAGS += -I$(INCLUDE_DIR) -I$(GENERATED_DIR) -L$(GENERATED_DIR) -O3 -Wall -pthread $(DEFINES) -g2 -flto -std=c++17
+CFLAGS += -I$(INCLUDE_DIR) -I$(GENERATED_DIR) -L$(GENERATED_DIR) -O3 -Wall -pthread $(DEFINES) -g2 -flto -std=c17
 
-LIB_DEPS = -l:pmhw.so
+LIB_DEPS = -l:pmhw.so -lm
 
 SIM_TYPES = sim
 
