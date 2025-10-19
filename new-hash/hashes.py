@@ -108,3 +108,4 @@ def make_interleaved_fibonacci_hashes(n_parts: int, index_length: int) -> list[C
     return [partial(interleaved_fibonacci_hash, part_index=i) for i in range(n_parts)]
 
 interleaved_fibonacci_hashes_4_11 = make_interleaved_fibonacci_hashes(4, 11)
+interleaved_fibonacci_hashes_8_8 = make_interleaved_fibonacci_hashes(8, 8)

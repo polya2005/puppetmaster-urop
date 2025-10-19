@@ -1,11 +1,11 @@
-from hashes import original_hashes, interleaved_fibonacci_hashes_4_11
+from hashes import original_hashes, interleaved_fibonacci_hashes_4_11, interleaved_fibonacci_hashes_8_8
 import numpy as np
 from typing import Callable
 from tqdm import tqdm
 import matplotlib.pyplot as plt
 
 
-def analyze_hash(hashes: list[Callable[[np.unsignedinteger], np.unsignedinteger]], num_samples: int = 100000) -> None:
+def analyze_hash(hashes: list[Callable[[np.unsignedinteger], np.unsignedinteger]], num_samples: int = 100000, max_value: int = 2048) -> None:
     """
     Analyze the distribution of hash values for a given hash function.
 
@@ -26,7 +26,7 @@ def analyze_hash(hashes: list[Callable[[np.unsignedinteger], np.unsignedinteger]
     for i, h in enumerate(hashes):
         hash_values.append(np.array([h(s) for s in tqdm(samples, desc=f"Hashing with function {i + 1}")], dtype=np.uint32))
         print(f"Hash function analysis {i + 1}:")
-        frequencies = np.bincount(hash_values[i], minlength=2048)
+        frequencies = np.bincount(hash_values[i], minlength=max_value)
         print(f"Standard Deviation / Mean: {np.std(frequencies) / np.mean(frequencies)}")
 
         plt.figure(figsize=(12, 6))
@@ -38,4 +38,4 @@ def analyze_hash(hashes: list[Callable[[np.unsignedinteger], np.unsignedinteger]
 
 
 if __name__ == "__main__":
-    analyze_hash(original_hashes + interleaved_fibonacci_hashes_4_11, num_samples=1000000)
+    analyze_hash(interleaved_fibonacci_hashes_8_8, num_samples=1000000, max_value=256)
