@@ -79,7 +79,7 @@ def fibonacci_hash(obj: np.uint32, n_bits: int = 11) -> np.uint64:
     """
     fib_constant = int((1 << (n_bits)) // ((1 + 5 ** 0.5) / 2)) | 1  # Ensure odd
     hashed_value = int(obj) * fib_constant
-    return np.uint64((hashed_value >> (64 - n_bits)) & ((1 << n_bits) - 1))
+    return np.uint64(hashed_value & ((1 << n_bits) - 1))
 
 
 def make_interleaved_fibonacci_hashes(n_parts: int, index_length: int) -> list[Callable[[np.uint32, int], np.uint32]]:
