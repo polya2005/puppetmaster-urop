@@ -66,19 +66,16 @@ endfunction
 //     return h;
 // endfunction
 
+typedef TMul#(NumBloomParts, TLog#(BloomPartSize)) NBits;
 function BloomLocation hashObject(ObjectId obj);
-    Integer nBits = valueOf(NumBloomParts) * log2(valueOf(BloomPartSize));
-    Integer fibConstant = ((1 << nBits) / (1 + sqrt(5) / 2));
+    // Integer nBits = valueOf(NBits);
+    Integer fibConstant = trunc(fromInteger(valueOf(TExp#(NBits))) / (1.0 + sqrt(5.0)) * 2.0);
     if (fibConstant % 2 == 0) begin
         fibConstant = fibConstant + 1; // Make it odd
     end
-    Bit#(nBits) fibConstantBit = fromInteger(fibConstant);
-    Bit#(nBits) fullHash;
-    if (nBits < 32) begin
-        fullHash = truncate(obj) * fibConstantBit;
-    end else begin
-        fullHash = zeroExtend(obj) * fibConstantBit;
-    end
+    Bit#(NBits) fibConstantBit = fromInteger(fibConstant);
+    Bit#(TAdd#(NBits, 32)) objBit = zeroExtend(obj);
+    Bit#(NBits) fullHash = truncate(objBit) * fibConstantBit;
     BloomLocation h = newVector;
     for (Integer i = 0; i < valueOf(NumBloomParts); i = i + 1) begin
         BloomChunkIndex chunkIdx = 0;

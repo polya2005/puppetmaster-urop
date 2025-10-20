@@ -38,7 +38,7 @@ BSC_PROMOTED_WARNINGS=G0023
 # G0023: Condition for a rule is always false, removing
 
 BSC_FLAGS=\
-	+RTS -K1048576 -RTS\
+	+RTS -K1G -RTS\
   -vdir $(VERILOG_DIR) \
   -bdir $(BLUESPEC_DIR) \
   -simdir $(SIM_DIR)\
