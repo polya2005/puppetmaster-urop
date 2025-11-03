@@ -25,6 +25,11 @@ module fifo #(
 
   assign data_out = fifo_[read_pointer];
 
+  initial begin
+    write_pointer = 0;
+    read_pointer  = 0;
+  end
+
   always_ff @(posedge clk) begin
     if (rst) begin
       write_pointer <= 0;

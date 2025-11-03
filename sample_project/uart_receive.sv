@@ -29,6 +29,14 @@ module uart_receive #(
   logic [CLOCK_COUNTER_WIDTH-1:0] clock_counter;
   logic [3:0] bit_counter;
 
+  initial begin
+    state = IDLE;
+    dout_valid = 0;
+    dout = 0;
+    clock_counter = 0;
+    bit_counter = 0;
+  end
+
   always_ff @(posedge clk) begin
     if (rst) begin
       state <= IDLE;

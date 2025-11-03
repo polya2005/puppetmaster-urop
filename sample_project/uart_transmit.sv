@@ -19,6 +19,13 @@ module uart_transmit #(
   logic [CLOCK_COUNTER_WIDTH-1:0] clock_counter;
   logic [3:0] bit_counter;
 
+  initial begin
+    busy = 1'b0;
+    dout = 1'b1;
+    clock_counter = {CLOCK_COUNTER_WIDTH{1'b0}};
+    bit_counter = 0;
+  end
+
   always_ff @(posedge clk) begin
     if (rst) begin
       busy <= 1'b0;
