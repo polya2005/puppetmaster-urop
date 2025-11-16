@@ -72,7 +72,7 @@ $(VERILOG_FILES): $(VERILOG_DIR)/mk%.v: $(SRCS)
 .PHONY: synth-bloom
 synth-bloom: $(VERILOG_DIR)/mkSummarySynth.v
 	cd $(SYNTH_DIR) && \
-	mflowgen run --design Bloom && \
+	mflowgen run --design ../designs/Bloom && \
 	make clean-1 3
 
 # -------------------------
