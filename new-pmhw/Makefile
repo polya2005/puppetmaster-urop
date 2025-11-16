@@ -5,6 +5,7 @@ INFO_DIR=$(BUILD_DIR)/info
 VERILOG_DIR=$(BUILD_DIR)/verilog
 BLUESPEC_DIR=$(BUILD_DIR)/bluespec
 SIM_DIR=$(BUILD_DIR)/sim
+SYNTH_DIR=../mflowgen/build
 
 # -------------------------
 # Miscellaneous targets
@@ -46,7 +47,8 @@ BSC_FLAGS=\
   -aggressive-conditions -show-schedule \
   -suppress-warnings $(BSC_SUPPRESSED_WARNINGS) \
   -promote-warnings $(BSC_PROMOTED_WARNINGS) \
-  -p +:%/Libraries/FPGA/Xilinx:$(SRC)
+  -p +:$(SRC)
+#   -p +:%/Libraries/FPGA/Xilinx:$(SRC)
 
 BSC_SIM_FLAGS=-sim
 BSC_SYNTH_FLAGS=-remove-dollar -verilog
@@ -63,6 +65,15 @@ VERILOG_FILES=$(foreach test, $(VERILOG_NAMES), $(VERILOG_DIR)/mk$(test).v)
 $(VERILOG_FILES): $(VERILOG_DIR)/mk%.v: $(SRCS)
 	make dirs
 	bsc $(BSC_FLAGS) $(BSC_SYNTH_FLAGS) -g mk$* -u $(SRC)/$*.bsv
+
+# -------------------------
+# Synthesis target
+# -------------------------
+.PHONY: synth-bloom
+synth-bloom: $(VERILOG_DIR)/mkSummarySynth.v
+	cd $(SYNTH_DIR) && \
+	mflowgen run --design Bloom && \
+	make clean-1 3
 
 # -------------------------
 # Test targets
