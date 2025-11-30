@@ -12,16 +12,16 @@
 #include <unistd.h>
 #include <pthread.h>
 #include <time.h>
-#include <x86intrin.h> // for __rdtsc()
+#include <x86intrin.h>  // for __rdtsc()
 #include <sched.h>
 #include <sys/sysinfo.h>
 #include <getopt.h>
 
 
-#include "pmhw.h"
-#include "pmlog.h"
-#include "pmutils.h"
-#include "workload.h"
+#include "include/pmhw.h"
+#include "include/pmlog.h"
+#include "include/pmutils.h"
+#include "include/workload.h"
 
 // #define SCHEDULER_CORE 0
 #define MAIN_CORE 1
