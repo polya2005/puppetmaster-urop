@@ -1,2 +1,6 @@
 __pycache__/
 .DS_Store
+verilog_wrapper
+vivado.*
+.vscode
+scratch_code.*
