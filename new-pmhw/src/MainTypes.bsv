@@ -24,8 +24,8 @@ typedef struct {
 } Transaction deriving (Bounded, Bits, Eq, FShow);
 
 typedef 4 NumBloomParts;
-typedef 8 NumBloomChunks;
-typedef 256 BloomChunkSize;
+typedef 8 NumBloomChunks;  // Tweak this
+typedef 256 BloomChunkSize;  // Tweak this
 
 typedef TIndex#(NumBloomParts) BloomPartIndex;
 typedef TIndex#(NumBloomChunks) BloomChunkIndex;
