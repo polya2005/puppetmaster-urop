@@ -20,6 +20,8 @@ int main(int argc, char *argv[]) {
   double sim_time = sim_cycles / freq * 1e6;
   double txn_time = txn_cycles / freq * 1e6;
 
+  ASSERT(wl->num_txns < 4096); // FakeTxnDriver Memory limit
+
   INFO("Simulating %.1f us of work (%d cycles) with %.1f us (%d cycles) between transactions", sim_time, sim_cycles, txn_time, txn_cycles);
   INFO("This will run for %d seconds", shutdown_time);
 
