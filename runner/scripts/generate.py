@@ -10,7 +10,7 @@ OBJS_PER_TXN = [1, 2, 4, 8, 16]
 WRITE_PROBS = [0.0, 0.25, 0.5, 0.75]
 ZIPF_PARAMS = [0, 0.2, 0.4, 0.6, 0.8, 1.0]
 ADDR_SPACE_SIZE = 20_000_000
-NUM_TXNS = 1_000_000
+NUM_TXNS = 1000
 
 
 def generate_filename(
