@@ -10,46 +10,47 @@ import Real::*;
 // Optimized hash function focused on strong avalanche effect in lower 11 bits
 // (3 bits for chunk index + 8 bits for bit index)
 // TODO: careful, this only works well for 4x8x256 config (4x11 bits) rn
-function BloomPartLocation hash(ObjectId obj, Bit#(32) seed);
-    // Initialize with seed
-    Bit#(32) h = seed;
+// This is not used currently.
+// function BloomPartLocation hash(ObjectId obj, Bit#(32) seed);
+//     // Initialize with seed
+//     Bit#(32) h = seed;
 
-    // Split 32-bit object ID into 4 bytes for processing
-    Bit#(8) byte0 = obj[7:0];
-    Bit#(8) byte1 = obj[15:8];
-    Bit#(8) byte2 = obj[23:16];
-    Bit#(8) byte3 = obj[31:24];
+//     // Split 32-bit object ID into 4 bytes for processing
+//     Bit#(8) byte0 = obj[7:0];
+//     Bit#(8) byte1 = obj[15:8];
+//     Bit#(8) byte2 = obj[23:16];
+//     Bit#(8) byte3 = obj[31:24];
 
-    // First mixing stage - focus on affecting lower bits
-    h = h ^ zeroExtend(byte0);
-    h = {h[26:0], h[31:27]}; // 5-bit right rotation
+//     // First mixing stage - focus on affecting lower bits
+//     h = h ^ zeroExtend(byte0);
+//     h = {h[26:0], h[31:27]}; // 5-bit right rotation
 
-    h = h ^ zeroExtend(byte1);
-    h = {h[20:0], h[31:21]}; // 11-bit right rotation
+//     h = h ^ zeroExtend(byte1);
+//     h = {h[20:0], h[31:21]}; // 11-bit right rotation
 
-    h = h ^ zeroExtend(byte2);
-    h = {h[13:0], h[31:14]}; // 18-bit right rotation
+//     h = h ^ zeroExtend(byte2);
+//     h = {h[13:0], h[31:14]}; // 18-bit right rotation
 
-    h = h ^ zeroExtend(byte3);
+//     h = h ^ zeroExtend(byte3);
 
-    // Final mixing focused specifically on the lower 11 bits
-    // Extract upper bits and mix them into lower bits
-    Bit#(21) upper_bits = h[31:11];
-    Bit#(11) lower_bits = h[10:0];
+//     // Final mixing focused specifically on the lower 11 bits
+//     // Extract upper bits and mix them into lower bits
+//     Bit#(21) upper_bits = h[31:11];
+//     Bit#(11) lower_bits = h[10:0];
 
-    // Strong mixing for the lower 11 bits by folding upper bits onto them
-    lower_bits = lower_bits ^ truncate(upper_bits);
-    lower_bits = lower_bits ^ truncate(upper_bits >> 10);
+//     // Strong mixing for the lower 11 bits by folding upper bits onto them
+//     lower_bits = lower_bits ^ truncate(upper_bits);
+//     lower_bits = lower_bits ^ truncate(upper_bits >> 10);
 
-    // Additional mixing within the lower bits
-    lower_bits = {lower_bits[7:0], lower_bits[10:8]} ^ {lower_bits[2:0], lower_bits[10:3]};
+//     // Additional mixing within the lower bits
+//     lower_bits = {lower_bits[7:0], lower_bits[10:8]} ^ {lower_bits[2:0], lower_bits[10:3]};
 
-    // Reconstruct the h with well-mixed lower bits
-    h = {upper_bits, lower_bits};
+//     // Reconstruct the h with well-mixed lower bits
+//     h = {upper_bits, lower_bits};
 
-    // Translate into location within the part
-    return tuple2(h[10:8], h[7:0]);
-endfunction
+//     // Translate into location within the part
+//     return tuple2(h[10:8], h[7:0]);
+// endfunction
 
 // Generate all hash values for an object
 // function BloomLocation hashObject(ObjectId obj);
