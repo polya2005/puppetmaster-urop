@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+BOARD=verilator
+
+LD_LIBRARY_PATH=$PWD/deps/wrapper/output/$BOARD/:$LD_LIBRARY_PATH
+env LD_LIBRARY_PATH=$LD_LIBRARY_PATH ./bin/hw_test $@
