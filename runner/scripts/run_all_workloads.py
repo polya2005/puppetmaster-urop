@@ -5,7 +5,6 @@ import asyncio
 import dotenv
 import itertools
 import os
-import subprocess
 from datetime import datetime
 from rich import print
 from rich.progress import track
