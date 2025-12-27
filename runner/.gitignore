@@ -9,3 +9,5 @@ SWSOCK*
 perf.*
 *.bin
 output/
+analysis/
+logs/
