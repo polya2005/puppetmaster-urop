@@ -221,18 +221,20 @@ module mkSummary(Summary);
     endrule
 
     // For check operation, we read and update compat register
+    // Can we finish checking early if we know it's incompatible already?
     rule doCheck_resp if (mRespChunk matches tagged Valid .respChunk &&& state == Checking);
         let data <- bloom.portB.response.get;
         let wrapRes <- checkOrAdd.func(data, respChunk, txn);
         let chunkCompat = tpl_1(wrapRes);
         CheckResult newCompat = unpack(pack(compat) | pack(chunkCompat));
         compat <= newCompat;
+        let newCompatIsGood = checkResultIsGood(newCompat);
         `ifdef DEBUG_SUMMARY
         $fdisplay(stderr, "[%0d] doCheck_resp: chunk=", cycle, fshow(respChunk),
                           ", chunkCompat=", fshow(chunkCompat), ", overall=", fshow(newCompat),
-                          ", which is good?:", fshow(checkResultIsGood(newCompat)));
+                          ", which is good?:", fshow(newCompatIsGood));
         `endif
-        mRespChunk <= respChunk < fromInteger(valueOf(NumBloomChunks)-1)
+        mRespChunk <= respChunk < fromInteger(valueOf(NumBloomChunks)-1) && newCompatIsGood
                       ? Valid(respChunk+1)
                       : Invalid;
     endrule
