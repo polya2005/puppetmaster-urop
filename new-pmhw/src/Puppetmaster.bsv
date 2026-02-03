@@ -259,9 +259,10 @@ module mkPuppetmaster(Puppetmaster);
     endrule
 
     // Tick refresh timer
-    rule startRefresh if (state == Normal && lookaheadFailCount == fromInteger(valueOf(LookaheadBufferSize)) && shadowComplete);
+    rule startRefresh if (state == Normal && mainSummary.getCount() > 200 && shadowComplete);
         `ifdef DEBUG_PMHW
         $fdisplay(stderr, "[%0d] startRefresh: Lookahead has failed often enough. Starting the refresh process.", cycle);
+        $fdisplay(stderr, "[%0d] Number of elements in the Bloom filter: %d", cycle, mainSummary.getCount());
         `endif
         $display("[%0d] refreshing", cycle);
         lookaheadFailCount <= 0;
