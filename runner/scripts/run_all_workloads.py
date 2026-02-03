@@ -127,9 +127,9 @@ async def run_hw(
     cmd = [
         f"{RUNNER_PATH}/hw_test",
         workload_file,
-        "0",
+        "625",
         "100" if throttle else "0",
-        str(options.timeout) if options.timeout is not None else "60",
+        str(options.timeout) if options.timeout is not None else "120",
     ]
     with open("hw_log.txt", "w") as hw_log:
         await execute_command(cmd, stream_stdout_to=hw_log)
