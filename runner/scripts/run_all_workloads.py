@@ -186,8 +186,8 @@ async def main():
 
     options = HW_OPTIONS if args.hw else SIM_OPTIONS
     for workload_file, options in track(
-        itertools.product(workload_files, SIM_OPTIONS),
-        total=len(workload_files) * len(SIM_OPTIONS),
+        itertools.product(workload_files, options),
+        total=len(workload_files) * len(options),
         description="Running and analyzing workloads",
     ):
         workload_path = os.path.join(args.workloads_dir, workload_file)
