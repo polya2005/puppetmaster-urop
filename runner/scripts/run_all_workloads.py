@@ -126,7 +126,7 @@ async def run_hw(
     cmd = [
         f"{RUNNER_PATH}/hw_test",
         workload_file,
-        "0",
+        "0" if throttle else "625",
         "100" if throttle else "0",
         str(options.timeout) if options.timeout is not None else "60",
     ]
