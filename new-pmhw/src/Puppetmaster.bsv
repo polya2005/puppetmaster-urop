@@ -16,7 +16,7 @@ import Arbitrate::*;
 import Cntrs::*;
 
 typedef 56 InputBufferSize;
-typedef 8 LookaheadBufferSize;
+typedef 2 LookaheadBufferSize;
 typedef 7 ActivePerPuppet; // has to be power of two-1
 typedef TMul#(ActivePerPuppet, MaxNumPuppets) SchedSize;
 typedef TIndex#(MaxNumPuppets) PuppetId;
